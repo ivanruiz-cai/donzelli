@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-KickOFF · M.Donzelli × CAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --red: #E63027;
+    --red-bright: #F03A30;
+    --red-soft: #FCE8E6;
+    --white: #FFFFFF;
+    --ink: #0A0A0A;
+    --gray-1: #3A3A3A;
+    --gray-2: #5C5C5C;
+    --gray-3: #8A8A8A;
+    --gray-4: #D8D8D8;
+    --gray-5: #ECECEC;
+    --gray-6: #F4F4F4;
+    --bg-soft: #FAFAFA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--gray-5);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  /* SLIDE BASE */
+  .slide {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    padding: 70px 90px 80px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--gray-5);
+    color: var(--ink);
+    border-top: 6px solid var(--red);
+  }
+
+  .slide.alt {
+    background: var(--white);
+  }
+
+  .slide.dark {
+    background: var(--gray-4);
+  }
+
+  /* CAI LOGO */
+  .cai-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    letter-spacing: -1px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .cai-logo .rocket {
+    font-size: 16px;
+    transform: translateY(-2px);
+  }
+
+  .logo-corner {
+    position: absolute;
+    bottom: 38px;
+    right: 90px;
+  }
+
+  /* FOOTER TAG */
+  .footer-tag {
+    position: absolute;
+    bottom: 38px;
+    left: 0;
+    background: var(--red);
+    color: var(--white);
+    padding: 12px 28px 12px 90px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* SLIDE NUMBER */
+  .slide-number {
+    position: absolute;
+    top: 30px;
+    right: 90px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-3);
+    letter-spacing: 2px;
+  }
+
+  /* TITLE STRUCTURE FOR CONTENT SLIDES */
+  .slide-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .slide-title .accent { color: var(--red); }
+
+  .title-rule {
+    height: 1px;
+    background: var(--gray-4);
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .title-rule::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .content-block {
+    border-left: 4px solid var(--red);
+    padding: 8px 0 8px 28px;
+    margin-bottom: 16px;
+  }
+
+  .lead-text {
+    font-size: 19px;
+    color: var(--gray-1);
+    max-width: 800px;
+    line-height: 1.55;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+  .lead-text strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* COVER SLIDE */
+  .cover {
+    background: var(--white);
+    color: var(--ink);
+    border-top: 6px solid var(--red);
+    background-image: linear-gradient(180deg, var(--white) 0%, var(--white) 70%, var(--gray-5) 100%);
+  }
+
+  .cover .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+
+  .cover .doc-tag {
+    background: var(--red);
+    color: var(--white);
+    padding: 8px 18px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .cover h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 130px;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  .cover h1 .accent { color: var(--red); }
+
+  .cover .subtitle {
+    font-size: 22px;
+    color: var(--gray-1);
+    max-width: 720px;
+    line-height: 1.5;
+    margin-bottom: 60px;
+  }
+
+  .cover .badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--white);
+    padding: 16px 32px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 60px;
+    margin-top: auto;
+    border-top: 1px solid var(--red);
+    padding-top: 22px;
+  }
+
+  .cover-meta-block .label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cover-meta-block .value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* OVERVIEW SLIDE — phases grid */
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .phase-card {
+    background: var(--white);
+    border: 1px solid var(--gray-4);
+    border-top: 4px solid var(--red);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 240px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .phase-card .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .phase-card .ph-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.15;
+    text-transform: uppercase;
+    min-height: 42px;
+  }
+
+  .phase-card .ph-summary {
+    font-size: 13px;
+    color: var(--gray-1);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .phase-card .ph-dates {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: flex;
+    gap: 70px;
+    margin-top: 50px;
+    padding-top: 36px;
+    border-top: 1px solid var(--gray-4);
+  }
+
+  .stat-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-num .accent { color: var(--red); }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-1);
+    margin-top: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* TIMELINE */
+  .timeline-wrap { margin-top: 28px; }
+
+  .timeline-week {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 28px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--gray-4);
+    background: var(--white);
+    margin-bottom: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .timeline-week:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .week-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-top: 4px;
+  }
+
+  .week-label .week-dates {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-2);
+    letter-spacing: 0.5px;
+    text-transform: none;
+    margin-top: 4px;
+  }
+
+  .week-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .day-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 14px;
+  }
+
+  .day-name {
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .day-action {
+    color: var(--gray-1);
+    line-height: 1.55;
+    font-weight: 500;
+  }
+
+  .day-action strong { color: var(--red); font-weight: 800; }
+
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 8px;
+    vertical-align: middle;
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .pill.bf { background: var(--gray-4); color: var(--gray-1); }
+
+  /* PHASE DETAIL SLIDE */
+  .phase-detail-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    margin-bottom: 50px;
+    padding-bottom: 28px;
+    border-bottom: 3px solid var(--ink);
+  }
+
+  .phase-big-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 220px;
+    color: var(--red);
+    line-height: 0.85;
+    letter-spacing: -10px;
+  }
+
+  .phase-title-block { padding-bottom: 18px; }
+
+  .phase-title-block .ph-eyebrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .phase-title-block h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .phase-title-block .dates-line {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-2);
+    letter-spacing: 0.5px;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .phase-block h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-4);
+  }
+
+  .phase-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .phase-block li {
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .phase-block li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 10px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .phase-block li strong { color: var(--red); font-weight: 700; }
+
+  /* NEXT STEPS */
+  .next-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .next-step {
+    background: var(--white);
+    border: 1px solid var(--gray-4);
+    border-top: 4px solid var(--red);
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .next-step .step-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 44px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .next-step h4 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 17px;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .next-step p {
+    font-size: 14px;
+    color: var(--gray-1);
+    line-height: 1.6;
+  }
+
+  /* ALERT BOX */
+  .alert-box {
+    background: var(--red);
+    color: var(--white);
+    padding: 26px 32px;
+    margin-top: 50px;
+    max-width: 920px;
+    border-left: 6px solid var(--ink);
+  }
+
+  .alert-box .alert-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .alert-box p {
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.55;
+    font-weight: 500;
+  }
+
+  .alert-box p strong { color: var(--ink); font-weight: 700; }
+
+  /* SCROLLBAR */
+  .deck::-webkit-scrollbar { width: 6px; }
+  .deck::-webkit-scrollbar-track { background: var(--gray-5); }
+  .deck::-webkit-scrollbar-thumb { background: var(--red); }
+
+  /* PRINT */
+  @media print {
+    .deck { height: auto; overflow: visible; }
+    .slide { page-break-after: always; min-height: auto; padding: 40px 60px 70px; }
+  }
+
+  @media (max-width: 1100px) {
+    .slide { padding: 60px 40px 80px; }
+    .footer-tag { padding-left: 40px; }
+    .logo-corner { right: 40px; }
+    .slide-number { right: 40px; }
+    .cover h1 { font-size: 80px; }
+    .slide-title { font-size: 38px; }
+    .phase-big-num { font-size: 130px; }
+    .phases-grid { grid-template-columns: repeat(2, 1fr); }
+    .phase-grid { grid-template-columns: 1fr; gap: 30px; }
+    .next-steps { grid-template-columns: 1fr; }
+    .stats-row { flex-wrap: wrap; gap: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- SLIDE 1 — COVER -->
+  <section class="slide cover">
+    <div class="slide-number">01 / 09</div>
+    <div class="top-row">
+      <div class="doc-tag">Pre-KickOFF · Donzelli × CAI</div>
+      <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+    </div>
+    <div style="margin-top: 40px;">
+      <h1>Onboarding<br>Sistema de <span class="accent">Marketing.</span></h1>
+      <p class="subtitle">Hoja de ruta del proceso de descubrimiento, análisis y construcción estratégica que vamos a recorrer juntos durante las próximas tres semanas.</p>
+      <div class="badge">8 → 31 de Mayo</div>
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-block">
+        <div class="label">Cliente</div>
+        <div class="value">M.Donzelli</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Período</div>
+        <div class="value">8 → 31 de mayo 2026</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Fases</div>
+        <div class="value">5 fases · 23 días</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 — VISIÓN GENERAL -->
+  <section class="slide">
+    <div class="slide-number">02 / 09</div>
+    <h2 class="slide-title">Visión <span class="accent">General</span></h2>
+    <div class="title-rule"></div>
+    <div class="content-block">
+      <p class="lead-text">5 fases para construir una estrategia sólida. Cada fase produce input para la siguiente y termina en una decisión estratégica respaldada por información, no por intuición.</p>
+    </div>
+
+    <div class="phases-grid">
+      <div class="phase-card">
+        <div class="num">01</div>
+        <div class="ph-name">Kickoff y Setup</div>
+        <div class="ph-summary">Reunión de apertura, entrega de documentación, accesos y reglas del proceso.</div>
+        <div class="ph-dates">Vie 8 may</div>
+      </div>
+      <div class="phase-card">
+        <div class="num">02</div>
+        <div class="ph-name">Descubrimiento</div>
+        <div class="ph-summary">Cuestionarios, investigación CAI, reuniones y entrevistas a clientes en paralelo.</div>
+        <div class="ph-dates">Lun 11 — Vie 22 may</div>
+      </div>
+      <div class="phase-card">
+        <div class="num">03</div>
+        <div class="ph-name">Síntesis Interna</div>
+        <div class="ph-summary">Cruce de toda la información y construcción de hallazgos preliminares.</div>
+        <div class="ph-dates">~ Mar 26 may</div>
+      </div>
+      <div class="phase-card">
+        <div class="num">04</div>
+        <div class="ph-name">Acercamiento Estratégico</div>
+        <div class="ph-summary">Presentación de hallazgos al cliente y captura de feedback estratégico.</div>
+        <div class="ph-dates">~ Jue 28 may</div>
+      </div>
+      <div class="phase-card">
+        <div class="num">05</div>
+        <div class="ph-name">Estrategia Final y Roadmap</div>
+        <div class="ph-summary">Documento maestro, roadmap 90 días y reunión de entrega formal.</div>
+        <div class="ph-dates">~ Sáb 30 may</div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div>
+        <div class="stat-num"><span class="accent">5</span></div>
+        <div class="stat-label">Fases</div>
+      </div>
+      <div>
+        <div class="stat-num">23</div>
+        <div class="stat-label">Días de trabajo</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Cuestionarios</div>
+      </div>
+      <div>
+        <div class="stat-num">4+1</div>
+        <div class="stat-label">Reuniones · Entrevistas</div>
+      </div>
+      <div>
+        <div class="stat-num"><span class="accent">1</span></div>
+        <div class="stat-label">Roadmap final</div>
+      </div>
+    </div>
+
+    <div class="footer-tag">Visión General</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 3 — TIMELINE COMPLETO -->
+  <section class="slide">
+    <div class="slide-number">03 / 09</div>
+    <h2 class="slide-title">Calendario <span class="accent">Completo</span></h2>
+    <div class="title-rule"></div>
+    <div class="content-block">
+      <p class="lead-text">Las próximas tres semanas, día por día. El cronograma corre en paralelo: lo que el cliente puede hacer mientras CAI trabaja, se hace en paralelo. Sin tiempos muertos.</p>
+    </div>
+
+    <div class="timeline-wrap">
+
+      <div class="timeline-week">
+        <div class="week-label">Semana 1<span class="week-dates">8 — 10 may</span></div>
+        <div class="week-content">
+          <div class="day-row">
+            <div class="day-name">Vie 8</div>
+            <div class="day-action"><span class="pill">Fase 1</span><strong>Reunión de Pre-Kickoff</strong> · Entrega de Welcome Pack, Documento de Accesos y los 3 Cuestionarios.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Sáb 9 / Dom 10</div>
+            <div class="day-action"><span class="pill bf">Pausa</span>Fin de semana.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-week">
+        <div class="week-label">Semana 2<span class="week-dates">11 — 17 may</span></div>
+        <div class="week-content">
+          <div class="day-row">
+            <div class="day-name">Lun 11 — Vie 15</div>
+            <div class="day-action"><span class="pill">Fase 2</span><strong>Cliente:</strong> completa los 3 cuestionarios. <strong>CAI:</strong> arranca investigación independiente y auditorías.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Sáb 16</div>
+            <div class="day-action"><span class="pill">Fase 2</span><strong>CAI revisa los cuestionarios entregados</strong> y marca pendientes o aclaraciones necesarias.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Dom 17</div>
+            <div class="day-action"><span class="pill bf">Pausa</span>—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-week">
+        <div class="week-label">Semana 3<span class="week-dates">18 — 24 may</span></div>
+        <div class="week-content">
+          <div class="day-row">
+            <div class="day-name">Lun 18</div>
+            <div class="day-action"><span class="pill">Fase 2</span><strong>Cliente completa pendientes</strong> de los cuestionarios marcados por CAI.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Mar 19 — Vie 22</div>
+            <div class="day-action"><span class="pill">Fase 2</span><strong>Reuniones y entrevistas:</strong> Kickoff oficial, deep-dive comercial, deep-dive estratégico (dueño + board), relevamiento operativo y 3–5 entrevistas a clientes actuales. CAI cierra investigación.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Sáb 23 / Dom 24</div>
+            <div class="day-action"><span class="pill bf">Pausa</span>—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-week">
+        <div class="week-label">Semana 4<span class="week-dates">25 — 31 may</span></div>
+        <div class="week-content">
+          <div class="day-row">
+            <div class="day-name">Mar 26 — Sáb 30</div>
+            <div class="day-action"><span class="pill">Fases 3 · 4 · 5</span><strong>Tres fases consecutivas:</strong> Síntesis interna CAI → Reunión de Acercamiento Estratégico → Integración del feedback → Estrategia Final y Roadmap → Reunión de entrega final.</div>
+          </div>
+          <div class="day-row">
+            <div class="day-name">Dom 31</div>
+            <div class="day-action"><span class="pill bf">Buffer</span>Margen de seguridad por si alguna instancia se desplaza.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-tag">Calendario</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 4 — FASE 1 -->
+  <section class="slide">
+    <div class="slide-number">04 / 09</div>
+    <div class="phase-detail-header">
+      <div class="phase-big-num">01</div>
+      <div class="phase-title-block">
+        <div class="ph-eyebrow">Fase</div>
+        <h2>Kickoff y Setup</h2>
+        <div class="dates-line">Viernes 8 de mayo</div>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-block">
+        <h3>Qué hacemos</h3>
+        <ul>
+          <li>Reunión de Pre-Kickoff con el dueño y un referente operativo.</li>
+          <li>Presentación del proceso, del equipo CAI y validación del cronograma.</li>
+          <li>Definición del <strong>decisor único</strong> del lado Donzelli y de los canales de comunicación.</li>
+          <li>Entrega en vivo de los documentos del onboarding.</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <h3>Qué entregamos</h3>
+        <ul>
+          <li><strong>Welcome Pack</strong> con cronograma completo, reglas, SLA y próximos pasos.</li>
+          <li><strong>Documento de Accesos y Stack</strong> con checklist de plataformas a compartir.</li>
+          <li><strong>3 Cuestionarios estructurados</strong> para iniciar el descubrimiento.</li>
+          <li>Calendario de las reuniones de la Fase 2 ya pre-agendadas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tag">Fase 01</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 5 — FASE 2 -->
+  <section class="slide">
+    <div class="slide-number">05 / 09</div>
+    <div class="phase-detail-header">
+      <div class="phase-big-num">02</div>
+      <div class="phase-title-block">
+        <div class="ph-eyebrow">Fase</div>
+        <h2>Descubrimiento</h2>
+        <div class="dates-line">Lunes 11 al Viernes 22 de mayo</div>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-block">
+        <h3>Carril Cliente</h3>
+        <ul>
+          <li><strong>11 al 15 may:</strong> completan los 3 cuestionarios (Negocio, Marca, Operativo + Comercial).</li>
+          <li><strong>18 may:</strong> completan los pendientes que CAI haya marcado el sábado 16.</li>
+          <li><strong>19 al 22 may:</strong> participan de las 4 reuniones de descubrimiento.</li>
+          <li>Habilitan accesos a plataformas y herramientas digitales.</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <h3>Carril CAI · en paralelo</h3>
+        <ul>
+          <li><strong>Auditorías:</strong> sitio web, SEO técnico y de contenido, redes orgánicas, campañas pagas, reviews.</li>
+          <li><strong>Análisis competitivo</strong> de 3–5 competidores directos y 2 indirectos.</li>
+          <li><strong>Social listening</strong> y benchmarking de industria.</li>
+          <li><strong>3 a 5 entrevistas</strong> a clientes actuales: input estratégico + testimonios.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tag">Fase 02</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 6 — FASE 3 -->
+  <section class="slide">
+    <div class="slide-number">06 / 09</div>
+    <div class="phase-detail-header">
+      <div class="phase-big-num">03</div>
+      <div class="phase-title-block">
+        <div class="ph-eyebrow">Fase</div>
+        <h2>Síntesis Interna CAI</h2>
+        <div class="dates-line">Aprox. Martes 26 de mayo</div>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-block">
+        <h3>Trabajo interno</h3>
+        <ul>
+          <li>Cruce sistemático de cuestionarios + reuniones + entrevistas + auditorías.</li>
+          <li>Detección de la <strong>brecha entre la audiencia percibida</strong> y la audiencia real.</li>
+          <li>Mapeo del embudo comercial actual con sus quiebres.</li>
+          <li>Construcción de hipótesis estratégicas.</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <h3>Output de la fase</h3>
+        <ul>
+          <li>Documento de <strong>Hallazgos Preliminares</strong>.</li>
+          <li>Hipótesis de <strong>posicionamiento</strong> y <strong>oportunidades estratégicas</strong>.</li>
+          <li>Lectura inicial del <strong>customer journey</strong> y de los puntos de fricción.</li>
+          <li>Presentación lista para la Fase 4.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tag">Fase 03</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 7 — FASE 4 -->
+  <section class="slide">
+    <div class="slide-number">07 / 09</div>
+    <div class="phase-detail-header">
+      <div class="phase-big-num">04</div>
+      <div class="phase-title-block">
+        <div class="ph-eyebrow">Fase</div>
+        <h2>Acercamiento Estratégico</h2>
+        <div class="dates-line">Aprox. Jueves 28 de mayo</div>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-block">
+        <h3>La reunión clave</h3>
+        <ul>
+          <li>Encuentro de 90–120 minutos con el dueño y piezas clave.</li>
+          <li>CAI presenta los <strong>hallazgos preliminares</strong> y las hipótesis estratégicas.</li>
+          <li>El cliente <strong>rebota:</strong> valida, corrige, agrega contexto.</li>
+          <li>Captura estructurada de cada matiz que aporten.</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <h3>Por qué es importante</h3>
+        <ul>
+          <li>El cliente ve su empresa <strong>"devuelta en espejo"</strong> y aparece información nueva.</li>
+          <li>Genera <strong>sensación de co-creación</strong>: la estrategia final no llega sorpresivamente.</li>
+          <li>Permite ajustar el rumbo antes de cerrar el documento maestro.</li>
+          <li>Reduce drásticamente las rondas de revisión posteriores.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tag">Fase 04</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 8 — FASE 5 -->
+  <section class="slide">
+    <div class="slide-number">08 / 09</div>
+    <div class="phase-detail-header">
+      <div class="phase-big-num">05</div>
+      <div class="phase-title-block">
+        <div class="ph-eyebrow">Fase</div>
+        <h2>Estrategia Final y Roadmap</h2>
+        <div class="dates-line">Aprox. Sábado 30 de mayo · Reunión de entrega</div>
+      </div>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-block">
+        <h3>Qué incluye el documento maestro</h3>
+        <ul>
+          <li><strong>Posicionamiento</strong> y propuesta de valor refinada.</li>
+          <li>Estrategia de marca, comunicación y <strong>messaging por audiencia</strong>.</li>
+          <li><strong>Customer journey</strong> rediseñado.</li>
+          <li>Plan integral de canales (orgánicos, pagos, owned).</li>
+          <li><strong>Roadmap detallado de 90 días</strong> y plan estratégico de 6–12 meses.</li>
+          <li>KPIs por canal y cadencia de revisión trimestral.</li>
+        </ul>
+      </div>
+      <div class="phase-block">
+        <h3>Cierre del onboarding</h3>
+        <ul>
+          <li>Reunión formal de presentación del documento estratégico.</li>
+          <li>Aprobación del roadmap por parte del cliente.</li>
+          <li>Activación inmediata del primer sprint operativo.</li>
+          <li><strong>Domingo 31:</strong> buffer de seguridad si alguna instancia se desplazó.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tag">Fase 05</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+  <!-- SLIDE 9 — PRÓXIMOS PASOS -->
+  <section class="slide">
+    <div class="slide-number">09 / 09</div>
+    <h2 class="slide-title">Próximos <span class="accent">Pasos</span></h2>
+    <div class="title-rule"></div>
+    <div class="content-block">
+      <p class="lead-text">Tres acciones simples para que la Fase 2 arranque al 100%. Si los plazos se cumplen, llegamos al 31 de mayo con la estrategia entregada.</p>
+    </div>
+
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="step-num">01</div>
+        <h4>Habilitar accesos</h4>
+        <p>Revisar el Documento de Accesos y compartir con CAI los usuarios y permisos a las plataformas que correspondan a Donzelli.</p>
+      </div>
+      <div class="next-step">
+        <div class="step-num">02</div>
+        <h4>Completar cuestionarios</h4>
+        <p>Distribuir internamente los 3 cuestionarios (Negocio, Marca, Operativo + Comercial) y entregarlos completos antes del viernes 15 de mayo.</p>
+      </div>
+      <div class="next-step">
+        <div class="step-num">03</div>
+        <h4>Confirmar agenda</h4>
+        <p>Validar quiénes participarán de cada una de las 4 reuniones de descubrimiento y bloquear los slots del 19 al 22 de mayo.</p>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <div class="alert-label">Punto Crítico</div>
+      <p>La fecha de entrega del <strong>31 de mayo</strong> está condicionada a la entrega completa de los cuestionarios el <strong>viernes 15 de mayo</strong>. CAI hará un check-in corto el jueves 14 para destrabar dudas y evitar bloqueos.</p>
+    </div>
+
+    <div class="footer-tag">Próximos Pasos</div>
+    <div class="logo-corner"><span class="cai-logo">CAI<span class="rocket">🚀</span></span></div>
+  </section>
+
+</div>
+</body>
+</html>
