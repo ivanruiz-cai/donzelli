@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario 1 · Negocio y Estrategia · M.Donzelli × CAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --red: #E63027;
+    --red-bright: #F03A30;
+    --red-dark: #B82420;
+    --white: #FFFFFF;
+    --ink: #0A0A0A;
+    --gray-1: #3A3A3A;
+    --gray-2: #5C5C5C;
+    --gray-3: #D8D8D8;
+    --gray-4: #ECECEC;
+    --bg: #F4F4F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+  }
+
+  /* CAI LOGO */
+  .cai-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .cai-logo .rocket { font-size: 14px; transform: translateY(-1px); }
+
+  /* COVER */
+  .cover {
+    background: var(--white);
+    color: var(--ink);
+    padding: 60px 70px 50px;
+    border-top: 6px solid var(--red);
+    position: relative;
+  }
+
+  .cover .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .cover .doc-tag {
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .cover .cai-logo { color: var(--ink); }
+
+  .cover .num-tag {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 110px;
+    color: var(--red);
+    line-height: 0.8;
+    margin-bottom: 14px;
+    letter-spacing: -4px;
+  }
+
+  .cover h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .cover h1 .accent { color: var(--red); }
+
+  .cover .lead {
+    font-size: 16px;
+    color: var(--gray-1);
+    max-width: 680px;
+    line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--red);
+    padding-top: 22px;
+  }
+
+  .cover-meta-block .label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .cover-meta-block .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 50px 70px;
+    background: var(--gray-4);
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .intro h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .intro h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    margin-top: 10px;
+  }
+
+  .intro p {
+    font-size: 15px;
+    color: var(--gray-1);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .intro p strong { color: var(--red); font-weight: 800; }
+
+  .intro-tips {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--white);
+    border-left: 4px solid var(--red);
+  }
+
+  .intro-tips strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .intro-tips p { font-size: 14px; color: var(--gray-1); line-height: 1.6; margin: 0; }
+
+  /* RESPONDENT */
+  .respondent-block {
+    padding: 40px 70px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-3);
+    border-top: 1px solid var(--gray-3);
+  }
+
+  /* Alternating section backgrounds */
+  .section:nth-of-type(even) {
+    background: var(--gray-4);
+  }
+
+  .respondent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  .field label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .field input,
+  .field textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 10px 12px;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* SECTION */
+  .section {
+    padding: 50px 70px 30px;
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 30px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--black);
+  }
+
+  .section-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    color: var(--red);
+    line-height: 0.85;
+    letter-spacing: -2px;
+  }
+
+  .section-title-block { padding-bottom: 4px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-title-block h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .section-intro {
+    font-size: 14px;
+    color: var(--gray-1);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-style: italic;
+    border-left: 3px solid var(--red);
+    padding-left: 16px;
+  }
+
+  /* QUESTION */
+  .q { margin-bottom: 26px; }
+
+  .q-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .q-label .num {
+    color: var(--red);
+    font-family: 'Archivo Black', sans-serif;
+    margin-right: 8px;
+  }
+
+  .q-help {
+    font-size: 12px;
+    color: var(--gray-1);
+    margin-bottom: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .q-input,
+  .q-textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 12px 14px;
+    background: var(--white);
+    width: 100%;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .q-textarea { min-height: 90px; line-height: 1.6; }
+  .q-textarea.tall { min-height: 130px; }
+
+  .q-input:focus, .q-textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .q-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+  /* REPEATING CARDS */
+  .repeating {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  .repeating-card {
+    background: var(--bg);
+    border-top: 4px solid var(--red);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .repeating-card .rc-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .repeating-card label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    color: var(--ink);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .repeating-card input,
+  .repeating-card textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 8px 10px;
+    background: var(--white);
+    width: 100%;
+    margin-top: 4px;
+    transition: border-color 0.15s ease;
+  }
+
+  .repeating-card textarea { resize: vertical; min-height: 56px; }
+
+  .repeating-card input:focus,
+  .repeating-card textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--white);
+    color: var(--gray-1);
+    padding: 26px 70px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 3px solid var(--red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .red { color: var(--red); font-weight: 700; }
+  .footer .cai-logo { color: var(--ink); font-size: 18px; }
+
+  /* PRINT */
+  @media print {
+    body { background: var(--white); }
+    .page { box-shadow: none; max-width: 100%; }
+    .cover { padding: 40px; }
+    .intro, .section, .respondent-block, .footer { padding-left: 40px; padding-right: 40px; }
+    .q { break-inside: avoid; }
+  }
+
+  @media (max-width: 800px) {
+    .cover, .intro, .section, .respondent-block, .footer { padding-left: 30px; padding-right: 30px; }
+    .respondent-grid, .repeating, .q-grid, .q-grid-3 { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 38px; }
+    .cover .num-tag { font-size: 80px; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+
+<style>
+  .download-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0A0A0A;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9999;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .download-bar .bar-msg {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #D8D8D8;
+  }
+  .download-bar .bar-msg strong { color: #fff; }
+  .download-bar-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-download {
+    background: #E63027;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .btn-txt {
+    background: transparent;
+    color: #D8D8D8;
+    border: 1px solid #3A3A3A;
+    padding: 12px 20px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  body { padding-bottom: 80px; }
+  @media print {
+    .download-bar { display: none !important; }
+    body { padding-bottom: 0 !important; }
+  }
+  @media (max-width: 600px) {
+    .download-bar { padding: 12px 20px; flex-direction: column; gap: 10px; }
+  }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="top-row">
+      <div class="doc-tag">Cuestionario 01 / 03 · Pre-KickOFF</div>
+      <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+    </div>
+    <div class="num-tag">01</div>
+    <h1>Negocio<br>y <span class="accent">Estrategia.</span></h1>
+    <p class="lead">Este cuestionario está pensado para ser respondido por el dueño o decisor estratégico. Buscamos entender el ADN del negocio: cómo nació, cómo factura, hacia dónde va y qué significa "ganar" para Donzelli en los próximos 12 meses.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-block">
+        <div class="label">Cliente</div>
+        <div class="value">M.Donzelli</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Recomendado para</div>
+        <div class="value">Dueño / Decisor estratégico</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Plazo</div>
+        <div class="value">Viernes 15 de mayo</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Tiempo estimado</div>
+        <div class="value">60 a 90 minutos</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h2>Antes de empezar</h2>
+    <p>Tomate el tiempo necesario. La calidad de la estrategia que CAI va a construir depende directamente de la profundidad y honestidad de las respuestas. <strong>No hay respuestas correctas.</strong> Lo que hoy sea ambiguo o no esté del todo definido también es información valiosa para nosotros.</p>
+    <p>Si una pregunta no aplica a Donzelli, escribí <strong>"no aplica"</strong> y por qué. Si no estás seguro, escribí lo que intuís y agregá <strong>"a confirmar"</strong>. En la Fase 2 vamos a profundizar todo esto en las reuniones.</p>
+    <div class="intro-tips">
+      <strong>Recomendación CAI</strong>
+      <p>Respondé en bloques de 30 minutos. Si dejás algo a medio responder, marcá la pregunta y volvé al día siguiente. Funciona mejor que forzar todo en una sola sesión.</p>
+    </div>
+  </section>
+
+  <!-- RESPONDENT -->
+  <section class="respondent-block">
+    <div class="respondent-grid">
+      <div class="field">
+        <label>¿Quién completa este cuestionario?</label>
+        <input type="text" placeholder="Nombre y apellido">
+      </div>
+      <div class="field">
+        <label>Rol en la empresa</label>
+        <input type="text" placeholder="Ej: CEO, Founder, Director Comercial">
+      </div>
+      <div class="field">
+        <label>Fecha de respuesta</label>
+        <input type="text" placeholder="DD / MM / 2026">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1 — HISTORIA Y ESTRUCTURA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Historia y estructura</h2>
+      </div>
+    </div>
+    <p class="section-intro">Queremos entender de dónde viene la empresa, por qué existe y cómo está construida hoy.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.1</span>Contanos brevemente la historia de Donzelli: cuándo y por qué nació, qué problema vino a resolver y cómo evolucionó hasta hoy.</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.2</span>¿Cuál es la <strong>misión</strong> de Donzelli (el por qué del negocio, más allá de facturar)?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.3</span>¿Cuál es la <strong>visión</strong> a 3–5 años? ¿Cómo te imaginás que va a verse la empresa en ese horizonte?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.4</span>¿Cuáles son los <strong>valores</strong> que guían las decisiones del día a día?</label>
+      <p class="q-help">Pueden ser explícitos (ya escritos) o implícitos (los que en la práctica priorizan, aunque nunca los hayan formalizado).</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q-grid">
+      <div class="q">
+        <label class="q-label"><span class="num">1.5</span>Cantidad total de personas que trabajan en Donzelli</label>
+        <input type="text" class="q-input" placeholder="Ej: 12 personas">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">1.6</span>¿Cómo se reparten por área?</label>
+        <input type="text" class="q-input" placeholder="Ej: 3 ventas, 2 marketing, 5 operaciones, 2 admin">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 2 — MODELO DE NEGOCIO -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Modelo de negocio</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo factura Donzelli, qué vende, a quién y con qué márgenes.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.1</span>Describí en una frase qué hace Donzelli, como se lo explicarías a alguien que nunca escuchó hablar de la empresa.</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.2</span>¿Cuáles son las <strong>3 categorías de productos más importantes</strong> que ofrece Donzelli?</label>
+      <p class="q-help">Agrupar por categoría (no producto individual): listar las 3 categorías más representativas en orden de importancia.</p>
+      <div class="repeating">
+        <div class="repeating-card">
+          <div class="rc-title">Categoría 1</div>
+          <label>Nombre de la categoría</label>
+          <input type="text" placeholder="...">
+          <label>Descripción breve</label>
+          <textarea placeholder="¿Qué incluye esta categoría?"></textarea>
+          <label>Rango de precios</label>
+          <input type="text" placeholder="$ desde — hasta">
+          <label>% de facturación</label>
+          <input type="text" placeholder="Ej: 40%">
+        </div>
+        <div class="repeating-card">
+          <div class="rc-title">Categoría 2</div>
+          <label>Nombre de la categoría</label>
+          <input type="text" placeholder="...">
+          <label>Descripción breve</label>
+          <textarea placeholder="¿Qué incluye esta categoría?"></textarea>
+          <label>Rango de precios</label>
+          <input type="text" placeholder="$ desde — hasta">
+          <label>% de facturación</label>
+          <input type="text" placeholder="Ej: 35%">
+        </div>
+        <div class="repeating-card">
+          <div class="rc-title">Categoría 3</div>
+          <label>Nombre de la categoría</label>
+          <input type="text" placeholder="...">
+          <label>Descripción breve</label>
+          <textarea placeholder="¿Qué incluye esta categoría?"></textarea>
+          <label>Rango de precios</label>
+          <input type="text" placeholder="$ desde — hasta">
+          <label>% de facturación</label>
+          <input type="text" placeholder="Ej: 25%">
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.2 bis</span>Notas libres sobre el catálogo de productos</label>
+      <p class="q-help">Espacio abierto para agregar contexto: estacionalidad, productos pendientes de lanzar, líneas que se discontinuarán, particularidades del catálogo, etc.</p>
+      <textarea class="q-textarea tall" placeholder="Espacio libre..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.3</span>¿Cuál es el <strong>producto / servicio estrella</strong>? ¿Por qué? ¿Qué lo hace especial?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.4</span>¿Cuál es el <strong>producto / servicio con mejor margen</strong>? ¿Y el de margen más bajo?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.5</span>¿Hay productos o servicios que <strong>quisieras dejar de ofrecer</strong> o que no son rentables hoy?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.6</span>¿Cómo está distribuido tu negocio? Marcá los porcentajes aproximados.</label>
+      <div class="q-grid-3">
+        <div class="field">
+          <label>% B2C (consumidor final)</label>
+          <input type="text" placeholder="Ej: 70%">
+        </div>
+        <div class="field">
+          <label>% B2B (otras empresas)</label>
+          <input type="text" placeholder="Ej: 20%">
+        </div>
+        <div class="field">
+          <label>% Otro</label>
+          <input type="text" placeholder="Ej: 10%">
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.7</span>¿Cuáles son los principales canales de venta hoy? ¿Por dónde llegan más clientes?</label>
+      <p class="q-help">Ej: punto de venta físico, ecommerce propio, marketplaces, redes sociales, referidos, WhatsApp, telemarketing, ventas B2B directas, distribuidores.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.8</span>¿Cuál es el <strong>ticket promedio</strong> y la <strong>frecuencia de compra</strong>?</label>
+      <div class="q-grid">
+        <input type="text" class="q-input" placeholder="Ticket promedio: $...">
+        <input type="text" class="q-input" placeholder="Frecuencia: Ej: 1 vez al mes">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — MERCADO Y COMPETENCIA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Mercado y competencia</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo ven el mercado en el que juegan, quiénes son los referentes y qué los diferencia.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.1</span>¿En qué <strong>industria o sector</strong> opera Donzelli? ¿Cómo ves ese mercado hoy: en crecimiento, estable, en declive?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.2</span>¿En qué zonas geográficas operan hoy? ¿Hay zonas donde quieran expandirse?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.3</span>Identificá tus <strong>3 competidores directos</strong> más relevantes (los que un cliente compararía con Donzelli).</label>
+      <div class="repeating">
+        <div class="repeating-card">
+          <div class="rc-title">Competidor 1</div>
+          <label>Nombre</label>
+          <input type="text" placeholder="...">
+          <label>Por qué te preocupa</label>
+          <textarea placeholder="..."></textarea>
+          <label>En qué te superan</label>
+          <textarea placeholder="..."></textarea>
+        </div>
+        <div class="repeating-card">
+          <div class="rc-title">Competidor 2</div>
+          <label>Nombre</label>
+          <input type="text" placeholder="...">
+          <label>Por qué te preocupa</label>
+          <textarea placeholder="..."></textarea>
+          <label>En qué te superan</label>
+          <textarea placeholder="..."></textarea>
+        </div>
+        <div class="repeating-card">
+          <div class="rc-title">Competidor 3</div>
+          <label>Nombre</label>
+          <input type="text" placeholder="...">
+          <label>Por qué te preocupa</label>
+          <textarea placeholder="..."></textarea>
+          <label>En qué te superan</label>
+          <textarea placeholder="..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.4</span>¿Hay alguna marca que <strong>aspires a parecerte</strong> (puede ser de tu rubro o de otro)? ¿Por qué?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.5</span>Si un cliente potencial está dudando entre Donzelli y un competidor, ¿qué razón le harías ver para que elija Donzelli?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.6</span>Y al revés: ¿qué razones podrían hacerlo elegir al competidor?</label>
+      <p class="q-help">Sé honesto/a. Esta pregunta es la más útil para nosotros.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — OBJETIVOS Y KPIs -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Objetivos y KPIs</h2>
+      </div>
+    </div>
+    <p class="section-intro">Qué significa "ganar" para Donzelli en los próximos 3, 6 y 12 meses, y con qué números lo van a medir.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.1</span>Si dentro de <strong>3 meses</strong> esta estrategia funcionó perfecto, ¿qué pasó concretamente?</label>
+      <p class="q-help">Pensalo en números. Ej: "facturamos un 20% más", "duplicamos los leads calificados", "abrimos un nuevo canal".</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.2</span>¿Y dentro de <strong>6 meses</strong>?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.3</span>¿Y dentro de <strong>12 meses</strong>?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.4</span>¿Cuál es el <strong>KPI principal</strong> que mirás para saber si la empresa está bien?</label>
+      <p class="q-help">Puede ser facturación, cantidad de clientes, ticket promedio, tasa de retención, lo que sea.</p>
+      <input type="text" class="q-input" placeholder="Ej: facturación mensual recurrente">
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.5</span>¿Hay otros KPIs secundarios que también mires con frecuencia?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+  </section>
+
+  <!-- SECCIÓN 5 — RIESGOS Y OPORTUNIDADES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Riesgos y oportunidades</h2>
+      </div>
+    </div>
+    <p class="section-intro">Qué te quita el sueño y qué oportunidad creés que está sin tomar.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.1</span>¿Cuáles son los <strong>3 mayores riesgos</strong> que ves para Donzelli en los próximos 12 meses?</label>
+      <p class="q-help">Pueden ser internos (operativos, de equipo, de producto) o externos (mercado, competencia, regulación, contexto económico).</p>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.2</span>¿Cuáles son las <strong>3 mayores oportunidades</strong> que ves y que hoy no estás aprovechando del todo?</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.3</span>¿Hay algún <strong>cambio estructural</strong> que estés considerando en los próximos meses? Ej: lanzar nueva línea, cerrar un canal, abrir local, contratar dirección comercial, etc.</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.4</span>¿Qué expectativas tenés respecto al trabajo con CAI? ¿Qué te haría sentir que el proceso fue un éxito?</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.5</span>¿Hay algo más que sientas que es importante que CAI sepa antes de empezar la investigación?</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div><span class="red">CUESTIONARIO 01 / 03 · NEGOCIO Y ESTRATEGIA</span> &nbsp;·&nbsp; M.Donzelli &nbsp;·&nbsp; Mayo 2026</div>
+    <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+  </footer>
+
+</div>
+
+<div class="download-bar">
+  <div class="bar-msg"><strong>Cuestionario 01 - Negocio y Estrategia</strong> &nbsp;·&nbsp; Completá todas las preguntas y luego descargá.</div>
+  <div class="download-bar-actions">
+    <button class="btn-txt" id="btn-txt">⬇ Descargar TXT</button>
+    <button class="btn-download" id="btn-pdf">⬇ Guardar como PDF</button>
+  </div>
+</div>
+
+<script>
+document.getElementById('btn-pdf').addEventListener('click', function() {
+  window.print();
+});
+
+document.getElementById('btn-txt').addEventListener('click', function() {
+  var lines = [];
+  lines.push("Cuestionario 01 - Negocio y Estrategia");
+  lines.push("M.Donzelli x CAI - " + new Date().toLocaleDateString('es-AR'));
+  lines.push("============================================================");
+  lines.push("");
+
+  // Datos del respondente
+  var respBlock = document.querySelector('.respondent-block');
+  if (respBlock) {
+    lines.push("-- DATOS DEL RESPONDENTE --");
+    var respLabels = respBlock.querySelectorAll('label');
+    var respInputs = respBlock.querySelectorAll('input, textarea');
+    for (var i = 0; i < respLabels.length; i++) {
+      var inp = respInputs[i];
+      if (inp) lines.push(respLabels[i].innerText.trim() + ": " + (inp.value.trim() || "(sin respuesta)"));
+    }
+    lines.push("");
+  }
+
+  // Preguntas
+  var allQ = document.querySelectorAll('.q');
+  for (var q = 0; q < allQ.length; q++) {
+    var qEl = allQ[q];
+    var qLabel = qEl.querySelector('.q-label');
+    if (qLabel) lines.push(">> " + qLabel.innerText.trim());
+
+    var cards = qEl.querySelectorAll('.repeating-card');
+    if (cards.length > 0) {
+      for (var c = 0; c < cards.length; c++) {
+        var card = cards[c];
+        var ct = card.querySelector('.rc-title');
+        if (ct) lines.push("  -- " + ct.innerText.trim() + " --");
+        var clabels = card.querySelectorAll('label');
+        var cinputs = card.querySelectorAll('input, textarea');
+        for (var ci = 0; ci < cinputs.length; ci++) {
+          var cl = clabels[ci];
+          lines.push("  " + (cl ? cl.innerText.trim() + ": " : "") + (cinputs[ci].value.trim() || "(sin respuesta)"));
+        }
+        lines.push("");
+      }
+    } else {
+      var inputs = qEl.querySelectorAll('input, textarea');
+      for (var ii = 0; ii < inputs.length; ii++) {
+        lines.push("  " + (inputs[ii].value.trim() || "(sin respuesta)"));
+      }
+    }
+    lines.push("");
+  }
+
+  var text = lines.join('\n');
+  var dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  var link = document.createElement('a');
+  link.setAttribute('href', dataUri);
+  link.setAttribute('download', 'cuestionario-01-negocio-estrategia-mdonzelli.txt');
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+</script>
+
+</body>
+</html>
