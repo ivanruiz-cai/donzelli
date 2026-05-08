@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario 3 · Operativo, Digital y Comercial · M.Donzelli × CAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --red: #E63027;
+    --red-bright: #F03A30;
+    --red-dark: #B82420;
+    --white: #FFFFFF;
+    --ink: #0A0A0A;
+    --gray-1: #3A3A3A;
+    --gray-2: #5C5C5C;
+    --gray-3: #D8D8D8;
+    --gray-4: #ECECEC;
+    --bg: #F4F4F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .cai-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .cai-logo .rocket { font-size: 14px; transform: translateY(-1px); }
+
+  /* COVER */
+  .cover {
+    background: var(--white);
+    color: var(--ink);
+    padding: 60px 70px 50px;
+    border-top: 6px solid var(--red);
+    position: relative;
+  }
+
+  .cover .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .cover .doc-tag {
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .cover .cai-logo { color: var(--ink); }
+
+  .cover .num-tag {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 110px;
+    color: var(--red);
+    line-height: 0.8;
+    margin-bottom: 14px;
+    letter-spacing: -4px;
+  }
+
+  .cover h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .cover h1 .accent { color: var(--red); }
+
+  .cover .lead {
+    font-size: 16px;
+    color: var(--gray-1);
+    max-width: 680px;
+    line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--red);
+    padding-top: 22px;
+  }
+
+  .cover-meta-block .label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .cover-meta-block .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 50px 70px;
+    background: var(--gray-4);
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .intro h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .intro h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    margin-top: 10px;
+  }
+
+  .intro p {
+    font-size: 15px;
+    color: var(--gray-1);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .intro p strong { color: var(--red); font-weight: 800; }
+
+  .intro-tips {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--white);
+    border-left: 4px solid var(--red);
+  }
+
+  .intro-tips strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .intro-tips p { font-size: 14px; color: var(--gray-1); line-height: 1.6; margin: 0; }
+
+  /* RESPONDENT */
+  .respondent-block {
+    padding: 40px 70px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-3);
+    border-top: 1px solid var(--gray-3);
+  }
+
+  /* Alternating section backgrounds */
+  .section:nth-of-type(even) {
+    background: var(--gray-4);
+  }
+
+  .respondent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  .field label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .field input,
+  .field textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 10px 12px;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* PART BANNER */
+  .part-banner {
+    background: var(--ink);
+    color: var(--white);
+    padding: 40px 70px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-top: 4px solid var(--red);
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .part-banner h2 { color: var(--white); }
+  .part-banner .pb-sub { color: var(--gray-3); }
+
+  .part-banner .pb-letter {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 80px;
+    color: var(--red);
+    line-height: 0.85;
+  }
+
+  .part-banner .pb-eyebrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .part-banner h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 36px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .part-banner .pb-sub {
+    font-size: 14px;
+    color: var(--gray-1);
+    font-style: italic;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 50px 70px 30px;
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 30px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--black);
+  }
+
+  .section-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    color: var(--red);
+    line-height: 0.85;
+    letter-spacing: -2px;
+  }
+
+  .section-title-block { padding-bottom: 4px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-title-block h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .section-intro {
+    font-size: 14px;
+    color: var(--gray-1);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-style: italic;
+    border-left: 3px solid var(--red);
+    padding-left: 16px;
+  }
+
+  /* QUESTION */
+  .q { margin-bottom: 26px; }
+
+  .q-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .q-label .num { color: var(--red); font-family: 'Archivo Black', sans-serif; margin-right: 8px; }
+
+  .q-help {
+    font-size: 12px;
+    color: var(--gray-1);
+    margin-bottom: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .q-input,
+  .q-textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 12px 14px;
+    background: var(--white);
+    width: 100%;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .q-textarea { min-height: 90px; line-height: 1.6; }
+  .q-textarea.tall { min-height: 130px; }
+
+  .q-input:focus, .q-textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  .q-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .q-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+  /* CHANNELS TABLE */
+  .channels-table {
+    border: 1px solid var(--gray-3);
+  }
+
+  .channels-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 130px;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--gray-3);
+    align-items: center;
+    background: var(--white);
+  }
+
+  .channels-row:last-child { border-bottom: none; }
+
+  .channels-row.head {
+    background: var(--ink);
+    color: var(--white);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .channel-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .channels-row input,
+  .channels-row textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 7px 9px;
+    background: var(--white);
+    width: 100%;
+    transition: border-color 0.15s ease;
+  }
+
+  .channels-row input:focus, .channels-row textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* FUNNEL STAGES */
+  .funnel-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--gray-3);
+  }
+
+  .funnel-stage {
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--gray-3);
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .funnel-stage:last-child { border-bottom: none; }
+  .funnel-stage:nth-child(odd) { background: var(--bg); }
+
+  .funnel-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .funnel-name .fn-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .funnel-name .fn-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .funnel-stage textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 10px 12px;
+    background: var(--white);
+    width: 100%;
+    min-height: 70px;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .funnel-stage textarea:focus { outline: none; border-color: var(--red); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--white);
+    color: var(--gray-1);
+    padding: 26px 70px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 3px solid var(--red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .red { color: var(--red); font-weight: 700; }
+  .footer .cai-logo { color: var(--ink); font-size: 18px; }
+
+  /* PRINT */
+  @media print {
+    body { background: var(--white); }
+    .page { box-shadow: none; max-width: 100%; }
+    .cover { padding: 40px; }
+    .intro, .section, .respondent-block, .footer, .part-banner { padding-left: 40px; padding-right: 40px; }
+    .q { break-inside: avoid; }
+  }
+
+  @media (max-width: 800px) {
+    .cover, .intro, .section, .respondent-block, .footer, .part-banner { padding-left: 30px; padding-right: 30px; }
+    .respondent-grid, .q-grid-2, .q-grid-3 { grid-template-columns: 1fr; }
+    .channels-row { grid-template-columns: 1fr; gap: 8px; }
+    .channels-row.head { display: none; }
+    .funnel-stage { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 38px; }
+    .cover .num-tag { font-size: 80px; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+
+<style>
+  .download-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0A0A0A;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9999;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .download-bar .bar-msg {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #D8D8D8;
+  }
+  .download-bar .bar-msg strong { color: #fff; }
+  .download-bar-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-download {
+    background: #E63027;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-download:hover { background: #B82420; }
+  .btn-txt {
+    background: transparent;
+    color: #D8D8D8;
+    border: 1px solid #3A3A3A;
+    padding: 12px 20px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .btn-txt:hover { border-color: #fff; color: #fff; }
+  body { padding-bottom: 80px; }
+  @media print {
+    .download-bar { display: none !important; }
+    body { padding-bottom: 0 !important; }
+  }
+  @media (max-width: 600px) {
+    .download-bar { padding: 12px 20px; flex-direction: column; gap: 10px; }
+  }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="top-row">
+      <div class="doc-tag">Cuestionario 03 / 03 · Pre-KickOFF</div>
+      <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+    </div>
+    <div class="num-tag">03</div>
+    <h1>Operativo, Digital<br>y <span class="accent">Comercial.</span></h1>
+    <p class="lead">Este cuestionario tiene tres partes integradas y se complementa entre el área de marketing y el área comercial. Buscamos entender el funcionamiento real día a día: qué herramientas usan, qué métricas miden, cómo está estructurado el equipo de ventas y dónde están los principales puntos de fricción.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-block">
+        <div class="label">Cliente</div>
+        <div class="value">M.Donzelli</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Recomendado para</div>
+        <div class="value">Marketing + Comercial + Ops</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Plazo</div>
+        <div class="value">Viernes 15 de mayo</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Tiempo estimado</div>
+        <div class="value">90 a 120 minutos</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h2>Antes de empezar</h2>
+    <p>El cuestionario está dividido en <strong>tres partes</strong>: la primera enfocada en el stack digital y operativo (qué tienen y cómo funciona), la segunda en performance histórica y presupuesto, y la tercera dedicada exclusivamente al <strong>departamento comercial</strong>.</p>
+    <p>Lo ideal es que <strong>marketing complete las partes 1 y 2</strong>, y que el <strong>responsable comercial complete la parte 3</strong>. Si alguna métrica exacta no la tienen, no inventen: marquen <strong>"a confirmar"</strong> y la relevamos juntos en la Fase 2.</p>
+    <div class="intro-tips">
+      <strong>Recomendación CAI</strong>
+      <p>Antes de responder este cuestionario, revisar 5 minutos las cuentas de Google Analytics, Meta Ads, CRM y planillas de seguimiento comercial. La mayoría de las preguntas se contestan más rápido con esos datos a la vista.</p>
+    </div>
+  </section>
+
+  <!-- RESPONDENT -->
+  <section class="respondent-block">
+    <div class="respondent-grid">
+      <div class="field">
+        <label>Responsables del cuestionario</label>
+        <input type="text" placeholder="Nombre/s y apellido/s">
+      </div>
+      <div class="field">
+        <label>Roles en la empresa</label>
+        <input type="text" placeholder="Ej: Marketing + Director comercial">
+      </div>
+      <div class="field">
+        <label>Fecha de respuesta</label>
+        <input type="text" placeholder="DD / MM / 2026">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PARTE A — OPERATIVO Y DIGITAL ============== -->
+  <section class="part-banner">
+    <div class="pb-letter">A</div>
+    <div>
+      <div class="pb-eyebrow">Parte A</div>
+      <h2>Operativo y Digital</h2>
+      <div class="pb-sub">Cómo funciona hoy el ecosistema de marketing y operaciones</div>
+    </div>
+  </section>
+
+  <!-- A1 — TRABAJO ACTUAL -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Operativa actual de marketing</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo se gestiona hoy el día a día de marketing y con qué recursos.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.1</span>¿Trabajan hoy con <strong>terceros / freelancers / agencias</strong> en alguna área de marketing? ¿En cuáles y bajo qué modalidad?</label>
+      <p class="q-help">Ej: community manager freelance, agencia de pauta, fotógrafo mensual, redactor por proyecto, productora audiovisual, etc.</p>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.2</span>¿Cuál sienten que es hoy el <strong>canal más fuerte</strong> de Donzelli? ¿Y el que más necesita mejorar?</label>
+      <div class="q-grid-2">
+        <textarea class="q-textarea" placeholder="Canal más fuerte y por qué"></textarea>
+        <textarea class="q-textarea" placeholder="Canal a mejorar y por qué"></textarea>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.3</span>¿Tienen <strong>calendario de contenidos</strong>, plan de campañas o simplemente trabajan reactivamente?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- A2 — PERFORMANCE -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Performance histórica</h2>
+      </div>
+    </div>
+    <p class="section-intro">Métricas y resultados de los últimos 6–12 meses. Si no tienen los datos exactos, escriban estimaciones.</p>
+
+    <div class="q-grid-3">
+      <div class="q">
+        <label class="q-label"><span class="num">2.1</span>Tráfico mensual al sitio</label>
+        <input type="text" class="q-input" placeholder="Visitas / mes (aprox.)">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">2.2</span>Leads / consultas mensuales</label>
+        <input type="text" class="q-input" placeholder="Cantidad / mes">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">2.3</span>Tasa de conversión web</label>
+        <input type="text" class="q-input" placeholder="% (si la conocen)">
+      </div>
+    </div>
+
+    <div class="q-grid-3">
+      <div class="q">
+        <label class="q-label"><span class="num">2.4</span>Seguidores Instagram</label>
+        <input type="text" class="q-input" placeholder="Cantidad">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">2.5</span>Engagement rate IG</label>
+        <input type="text" class="q-input" placeholder="% (si lo conocen)">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">2.6</span>Base de email mailing</label>
+        <input type="text" class="q-input" placeholder="Cantidad de contactos">
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.7</span>¿Cuál fue la <strong>mejor campaña / acción de marketing</strong> que hicieron en los últimos 12 meses? ¿Por qué funcionó?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.8</span>¿Cuál fue la peor o la que <strong>no funcionó</strong>? ¿Qué creen que falló?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.9</span>¿De dónde vienen <strong>la mayoría de los leads</strong> hoy? Estimar % aproximado por canal.</label>
+      <p class="q-help">Ej: 40% Instagram orgánico, 25% Google Ads, 15% boca a boca, 10% sitio web, 10% otros.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- A3 — PRESUPUESTO -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Presupuesto y recursos</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cuánto invierten hoy en marketing y cuánta capacidad operativa interna hay.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.1</span>¿Cuál es el <strong>presupuesto mensual total</strong> destinado a marketing hoy?</label>
+      <p class="q-help">Incluyendo pauta, agencias, herramientas, producción, eventos, todo.</p>
+      <input type="text" class="q-input" placeholder="Ej: USD/ARS X mensual">
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.2</span>¿Cómo está <strong>distribuido</strong> ese presupuesto aproximadamente? Estimar % por categoría.</label>
+      <textarea class="q-textarea" placeholder="Ej: 40% pauta digital, 20% agencia/freelancers, 15% producción de contenido, 10% herramientas, 15% eventos/otros"></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.3</span>¿Hay <strong>flexibilidad</strong> para ajustar la distribución del presupuesto en función de lo que la estrategia sugiera?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.4</span>¿Cuántas personas del equipo interno pueden dedicar tiempo a marketing y cuánto?</label>
+      <p class="q-help">Ej: "Una persona dedicada 100%, una persona 30%, el dueño 10%".</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- A4 — AGENCIAS PREVIAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Experiencia con agencias previas</h2>
+      </div>
+    </div>
+    <p class="section-intro">Qué ya intentaron, qué funcionó y qué no. Este aprendizaje es invaluable para no repetir errores.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.1</span>¿Trabajaron antes con <strong>agencias o freelancers</strong> de marketing? ¿Con cuántos? ¿Por cuánto tiempo?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.2</span>¿Qué <strong>funcionó bien</strong> en esas relaciones?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.3</span>¿Qué <strong>no funcionó</strong> y querrían que CAI no repita?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.4</span>¿Por qué dejaron de trabajar con la última agencia / freelancer (si aplica)?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- ============== PARTE B — DEPARTAMENTO COMERCIAL ============== -->
+  <section class="part-banner">
+    <div class="pb-letter">B</div>
+    <div>
+      <div class="pb-eyebrow">Parte B</div>
+      <h2>Departamento Comercial</h2>
+      <div class="pb-sub">A completar por el responsable de ventas o el dueño si hace ese rol</div>
+    </div>
+  </section>
+
+  <!-- B1 — ESTRUCTURA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Estructura del equipo comercial</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo está organizada la fuerza de ventas hoy.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.1</span>¿Cuántas personas hay en el área comercial / ventas? Describí los roles.</label>
+      <textarea class="q-textarea tall" placeholder="Ej: 1 director comercial, 2 vendedores en showroom, 1 vendedor B2B, 1 SDR..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.2</span>¿Cómo está organizada la <strong>asignación de leads</strong>? ¿Hay zonas, segmentos, productos asignados a cada persona?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.3</span>¿Hay <strong>esquema de comisiones / incentivos</strong> para ventas? Describí brevemente.</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- B2 — EMBUDO -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Embudo comercial actual</h2>
+      </div>
+    </div>
+    <p class="section-intro">Paso a paso, ¿qué pasa desde que entra una consulta hasta que se cierra una venta?</p>
+
+    <div class="funnel-stages">
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 1</div>
+          <div class="fn-title">Captación de lead</div>
+        </div>
+        <textarea placeholder="¿Cómo llega una consulta? Por qué canales, en qué formato (formulario, WhatsApp, llamada, walk-in)..."></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 2</div>
+          <div class="fn-title">Primer contacto</div>
+        </div>
+        <textarea placeholder="¿Cuánto tiempo pasa hasta el primer contacto? ¿Quién responde primero? ¿Por qué canal?"></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 3</div>
+          <div class="fn-title">Calificación</div>
+        </div>
+        <textarea placeholder="¿Cómo determinan si un lead es de buena calidad? ¿Qué preguntas hacen?"></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 4</div>
+          <div class="fn-title">Presentación / cotización</div>
+        </div>
+        <textarea placeholder="¿Cómo se presenta la propuesta? ¿En qué formato? ¿Cuánto tarda en armarse?"></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 5</div>
+          <div class="fn-title">Seguimiento / negociación</div>
+        </div>
+        <textarea placeholder="¿Cuántas veces se contacta a un lead que no respondió? ¿Cuál es el flujo de follow-up?"></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 6</div>
+          <div class="fn-title">Cierre</div>
+        </div>
+        <textarea placeholder="¿Cómo se concreta? ¿Hay contrato, pago anticipado, seña? ¿Quién factura?"></textarea>
+      </div>
+
+      <div class="funnel-stage">
+        <div class="funnel-name">
+          <div class="fn-label">Etapa 7</div>
+          <div class="fn-title">Onboarding / entrega</div>
+        </div>
+        <textarea placeholder="¿Qué pasa después del cierre y antes de la entrega final? ¿Hay un proceso definido?"></textarea>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- B3 — MÉTRICAS COMERCIALES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Métricas comerciales</h2>
+      </div>
+    </div>
+    <p class="section-intro">Si los datos exactos no están a mano, anotar estimaciones razonables.</p>
+
+    <div class="q-grid-3">
+      <div class="q">
+        <label class="q-label"><span class="num">7.1</span>Leads totales / mes</label>
+        <input type="text" class="q-input" placeholder="Cantidad">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">7.2</span>Leads calificados / mes</label>
+        <input type="text" class="q-input" placeholder="Cantidad">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">7.3</span>Cierres / mes</label>
+        <input type="text" class="q-input" placeholder="Cantidad">
+      </div>
+    </div>
+
+    <div class="q-grid-3">
+      <div class="q">
+        <label class="q-label"><span class="num">7.4</span>Tasa de cierre estimada</label>
+        <input type="text" class="q-input" placeholder="% (cierres / leads)">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">7.5</span>Ciclo de venta promedio</label>
+        <input type="text" class="q-input" placeholder="Ej: 7 días, 1 mes...">
+      </div>
+      <div class="q">
+        <label class="q-label"><span class="num">7.6</span>Ticket promedio</label>
+        <input type="text" class="q-input" placeholder="$">
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">7.7</span>¿De qué <strong>origen / canal</strong> vienen los leads que <strong>cierran mejor</strong> (mayor tasa de conversión a venta)?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">7.8</span>¿De qué origen vienen los leads <strong>menos calificados</strong> o que más tiempo pierden?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- B4 — HERRAMIENTAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Herramientas y coordinación con marketing</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo se gestiona el día a día comercial y cómo trabaja con marketing.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">8.1</span>¿Qué <strong>herramientas</strong> usa el equipo comercial hoy?</label>
+      <p class="q-help">CRM, planillas, WhatsApp Business, calendarios, ERP, plantillas de cotización, etc.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">8.2</span>¿Hay un <strong>CRM</strong>? ¿Está cargado y actualizado al día? ¿Qué información se registra de cada lead?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">8.3</span>¿Cómo se coordina <strong>marketing con ventas</strong> hoy? ¿Hay reuniones recurrentes, criterios de calificación de leads compartidos, feedback bidireccional?</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">8.4</span>Desde el equipo comercial, ¿qué <strong>tipo de leads</strong> les gustaría recibir más y qué tipo les gustaría recibir menos?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- B5 — PAIN POINTS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Pain points y mejoras</h2>
+      </div>
+    </div>
+    <p class="section-intro">Lo que duele del proceso comercial hoy y lo que sueñan resolver.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">9.1</span>¿Cuáles son las <strong>3 mayores fricciones</strong> que ven hoy en el proceso comercial?</label>
+      <p class="q-help">Pueden ser de tiempo de respuesta, calidad de leads, herramientas, capacitación, comunicación con marketing, etc.</p>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">9.2</span>Si tuvieras que pedirle <strong>una sola cosa</strong> a marketing para vender mejor, ¿qué sería?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">9.3</span>¿Hay clientes <strong>que NO compran</strong> y que sintamos que deberíamos haber cerrado? ¿Qué creés que falló?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">9.4</span>¿Hay un <strong>argumento o material de venta</strong> que sienten que les hace falta y hoy no tienen?</label>
+      <p class="q-help">Ej: catálogo actualizado, casos de éxito, calculadora de ROI, demo, video institucional, etc.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- NOTAS LIBRES -->
+  <section class="section" style="border-bottom: none;">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Notas libres</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cualquier cosa relevante sobre lo operativo, digital o comercial que no haya entrado en las secciones anteriores.</p>
+
+    <div class="q">
+      <textarea class="q-textarea tall" style="min-height: 180px;" placeholder="Espacio libre..."></textarea>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div><span class="red">CUESTIONARIO 03 / 03 · OPERATIVO, DIGITAL Y COMERCIAL</span> &nbsp;·&nbsp; M.Donzelli &nbsp;·&nbsp; Mayo 2026</div>
+    <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+  </footer>
+
+</div>
+
+<div class="download-bar">
+  <div class="bar-msg"><strong>Cuestionario 03 — Operativo, Digital y Comercial</strong> &nbsp;·&nbsp; Completá todas las preguntas y luego descargá.</div>
+  <div class="download-bar-actions">
+    <button class="btn-txt" onclick="descargarTXT()">⬇ Descargar TXT</button>
+    <button class="btn-download" onclick="descargarPDF()">⬇ Guardar como PDF</button>
+  </div>
+</div>
+
+<script>
+
+function descargarPDF() {
+  window.print();
+}
+
+function descargarTXT() {
+  var lines = [];
+  lines.push("Cuestionario 03 - Operativo, Digital y Comercial");
+  lines.push("M.Donzelli x CAI · " + new Date().toLocaleDateString('es-AR'));
+  lines.push("=".repeat(60));
+  lines.push("");
+
+  var respInputs = document.querySelectorAll('.respondent-block input, .respondent-block textarea');
+  var respLabels = document.querySelectorAll('.respondent-block label');
+  if (respInputs.length > 0) {
+    lines.push("-- DATOS DEL RESPONDENTE --");
+    respLabels.forEach(function(lbl, i) {
+      var inp = respInputs[i];
+      if (inp) lines.push(lbl.innerText.trim() + ": " + (inp.value.trim() || "(sin respuesta)"));
+    });
+    lines.push("");
+  }
+
+  var allQ = document.querySelectorAll('.q');
+  allQ.forEach(function(q) {
+    var qLabel = q.querySelector('.q-label');
+    if (qLabel) lines.push(">> " + qLabel.innerText.trim());
+
+    var cards = q.querySelectorAll('.repeating-card');
+    if (cards.length > 0) {
+      cards.forEach(function(card) {
+        var cardTitle = card.querySelector('.rc-title');
+        if (cardTitle) lines.push("  -- " + cardTitle.innerText.trim() + " --");
+        var cardLabels = card.querySelectorAll('label');
+        var cardInputs = card.querySelectorAll('input, textarea');
+        cardInputs.forEach(function(inp, i) {
+          var lbl = cardLabels[i];
+          if (lbl) lines.push("  " + lbl.innerText.trim() + ": " + (inp.value.trim() || "(sin respuesta)"));
+        });
+        lines.push("");
+      });
+    } else {
+      var inputs = q.querySelectorAll('input, textarea');
+      inputs.forEach(function(inp) {
+        var closestField = inp.closest('.field');
+        if (closestField) {
+          var fieldLabel = closestField.querySelector('label');
+          if (fieldLabel) { lines.push("  [" + fieldLabel.innerText.trim() + "] " + (inp.value.trim() || "(sin respuesta)")); return; }
+        }
+        lines.push("  " + (inp.value.trim() || "(sin respuesta)"));
+      });
+    }
+    lines.push("");
+  });
+
+  var text = lines.join('
+');
+  var dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  var a = document.createElement('a');
+  a.href = dataUri;
+  a.download = 'cuestionario-03-operativo-digital-mdonzelli.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+</script>
+
+</body>
+</html>

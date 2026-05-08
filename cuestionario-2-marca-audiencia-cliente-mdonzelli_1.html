@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario 2 · Marca, Audiencia y Cliente · M.Donzelli × CAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --red: #E63027;
+    --red-bright: #F03A30;
+    --red-dark: #B82420;
+    --white: #FFFFFF;
+    --ink: #0A0A0A;
+    --gray-1: #3A3A3A;
+    --gray-2: #5C5C5C;
+    --gray-3: #D8D8D8;
+    --gray-4: #ECECEC;
+    --bg: #F4F4F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .cai-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .cai-logo .rocket { font-size: 14px; transform: translateY(-1px); }
+
+  /* COVER */
+  .cover {
+    background: var(--white);
+    color: var(--ink);
+    padding: 60px 70px 50px;
+    border-top: 6px solid var(--red);
+    position: relative;
+  }
+
+  .cover .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .cover .doc-tag {
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 14px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .cover .cai-logo { color: var(--ink); }
+
+  .cover .num-tag {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 110px;
+    color: var(--red);
+    line-height: 0.8;
+    margin-bottom: 14px;
+    letter-spacing: -4px;
+  }
+
+  .cover h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+
+  .cover h1 .accent { color: var(--red); }
+
+  .cover .lead {
+    font-size: 16px;
+    color: var(--gray-1);
+    max-width: 680px;
+    line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--red);
+    padding-top: 22px;
+  }
+
+  .cover-meta-block .label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .cover-meta-block .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 50px 70px;
+    background: var(--gray-4);
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .intro h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .intro h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    margin-top: 10px;
+  }
+
+  .intro p {
+    font-size: 15px;
+    color: var(--gray-1);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .intro p strong { color: var(--red); font-weight: 800; }
+
+  .intro-tips {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--white);
+    border-left: 4px solid var(--red);
+  }
+
+  .intro-tips strong {
+    display: block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .intro-tips p { font-size: 14px; color: var(--gray-1); line-height: 1.6; margin: 0; }
+
+  /* RESPONDENT */
+  .respondent-block {
+    padding: 40px 70px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-3);
+    border-top: 1px solid var(--gray-3);
+  }
+
+  /* Alternating section backgrounds */
+  .section:nth-of-type(even) {
+    background: var(--gray-4);
+  }
+
+  .respondent-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  .field label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .field input,
+  .field textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 10px 12px;
+    background: var(--white);
+    transition: border-color 0.15s ease;
+  }
+
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* SECTION */
+  .section {
+    padding: 50px 70px 30px;
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 30px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--black);
+  }
+
+  .section-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    color: var(--red);
+    line-height: 0.85;
+    letter-spacing: -2px;
+  }
+
+  .section-title-block { padding-bottom: 4px; }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .section-title-block h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 30px;
+    color: var(--ink);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+  }
+
+  .section-intro {
+    font-size: 14px;
+    color: var(--gray-1);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-style: italic;
+    border-left: 3px solid var(--red);
+    padding-left: 16px;
+  }
+
+  /* QUESTION */
+  .q { margin-bottom: 26px; }
+
+  .q-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .q-label .num { color: var(--red); font-family: 'Archivo Black', sans-serif; margin-right: 8px; }
+
+  .q-help {
+    font-size: 12px;
+    color: var(--gray-1);
+    margin-bottom: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .q-input,
+  .q-textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 12px 14px;
+    background: var(--white);
+    width: 100%;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .q-textarea { min-height: 90px; line-height: 1.6; }
+  .q-textarea.tall { min-height: 130px; }
+
+  .q-input:focus, .q-textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  .q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ATTRIBUTE PAIRS */
+  .attr-pairs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .attr-row {
+    display: grid;
+    grid-template-columns: 1fr 220px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 18px;
+    background: var(--bg);
+    border: 1px solid var(--gray-3);
+  }
+
+  .attr-side { font-size: 13px; color: var(--gray-1); font-weight: 500; }
+  .attr-side.left { text-align: right; }
+  .attr-side.right { text-align: left; }
+  .attr-side strong { color: var(--ink); font-weight: 700; }
+
+  .attr-scale {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .attr-dot {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.15s ease;
+  }
+
+  .attr-dot:checked {
+    background: var(--red);
+    border-color: var(--ink);
+  }
+
+  /* PERSONA CARD */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .persona-card {
+    background: var(--bg);
+    border: 1px solid var(--gray-3);
+    border-top: 4px solid var(--red);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .persona-card .pc-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .persona-card label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 10px;
+    color: var(--ink);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .persona-card input,
+  .persona-card textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 8px 10px;
+    background: var(--white);
+    width: 100%;
+    margin-top: 4px;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .persona-card textarea { min-height: 60px; }
+
+  .persona-card input:focus, .persona-card textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+
+  /* JOURNEY STAGES */
+  .journey-stages { display: flex; flex-direction: column; gap: 12px; }
+
+  .journey-stage {
+    background: var(--bg);
+    border: 1px solid var(--gray-3);
+    border-left: 4px solid var(--red);
+    padding: 18px 22px;
+  }
+
+  .journey-stage .js-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .journey-stage .js-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .journey-stage textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    border: 1px solid var(--gray-3);
+    padding: 10px 12px;
+    background: var(--white);
+    width: 100%;
+    min-height: 70px;
+    transition: border-color 0.15s ease;
+    resize: vertical;
+  }
+
+  .journey-stage textarea:focus { outline: none; border-color: var(--red); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--white);
+    color: var(--gray-1);
+    padding: 26px 70px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 3px solid var(--red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .red { color: var(--red); font-weight: 700; }
+  .footer .cai-logo { color: var(--ink); font-size: 18px; }
+
+  /* PRINT */
+  @media print {
+    body { background: var(--white); }
+    .page { box-shadow: none; max-width: 100%; }
+    .cover { padding: 40px; }
+    .intro, .section, .respondent-block, .footer { padding-left: 40px; padding-right: 40px; }
+    .q { break-inside: avoid; }
+  }
+
+  @media (max-width: 800px) {
+    .cover, .intro, .section, .respondent-block, .footer { padding-left: 30px; padding-right: 30px; }
+    .respondent-grid, .persona-grid, .q-grid { grid-template-columns: 1fr; }
+    .attr-row { grid-template-columns: 1fr; }
+    .attr-side.left, .attr-side.right { text-align: center; }
+    .cover h1 { font-size: 38px; }
+    .cover .num-tag { font-size: 80px; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+
+<style>
+  .download-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0A0A0A;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9999;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .download-bar .bar-msg {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #D8D8D8;
+  }
+  .download-bar .bar-msg strong { color: #fff; }
+  .download-bar-actions { display: flex; gap: 12px; align-items: center; }
+  .btn-download {
+    background: #E63027;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-download:hover { background: #B82420; }
+  .btn-txt {
+    background: transparent;
+    color: #D8D8D8;
+    border: 1px solid #3A3A3A;
+    padding: 12px 20px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .btn-txt:hover { border-color: #fff; color: #fff; }
+  body { padding-bottom: 80px; }
+  @media print {
+    .download-bar { display: none !important; }
+    body { padding-bottom: 0 !important; }
+  }
+  @media (max-width: 600px) {
+    .download-bar { padding: 12px 20px; flex-direction: column; gap: 10px; }
+  }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="top-row">
+      <div class="doc-tag">Cuestionario 02 / 03 · Pre-KickOFF</div>
+      <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+    </div>
+    <div class="num-tag">02</div>
+    <h1>Marca, Audiencia<br>y <span class="accent">Cliente.</span></h1>
+    <p class="lead">Este cuestionario es ideal completarlo entre marketing, ventas y, si es posible, sumando la mirada del dueño en algunas preguntas. Buscamos entender cómo se ve la marca desde adentro y, sobre todo, a quién le habla y cómo se relaciona con ese alguien.</p>
+    <div class="cover-meta">
+      <div class="cover-meta-block">
+        <div class="label">Cliente</div>
+        <div class="value">M.Donzelli</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Recomendado para</div>
+        <div class="value">Marketing + Ventas</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Plazo</div>
+        <div class="value">Viernes 15 de mayo</div>
+      </div>
+      <div class="cover-meta-block">
+        <div class="label">Tiempo estimado</div>
+        <div class="value">75 a 100 minutos</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h2>Antes de empezar</h2>
+    <p>Las respuestas más útiles no son las más prolijas, son las más reales. Si tu marca todavía no tiene cosas formalizadas (manifiesto, personas, tono escrito), mejor: <strong>poné lo que aparece de manera natural</strong> y nosotros lo trabajamos.</p>
+    <p>Si una respuesta sale distinta entre marketing y ventas, <strong>respondé con las dos versiones</strong>. Esa diferencia es información estratégica para nosotros.</p>
+    <div class="intro-tips">
+      <strong>Recomendación CAI</strong>
+      <p>La sección de buyer personas y customer journey es la más rica para la estrategia. Si vas con poco tiempo, priorizá esas.</p>
+    </div>
+  </section>
+
+  <!-- RESPONDENT -->
+  <section class="respondent-block">
+    <div class="respondent-grid">
+      <div class="field">
+        <label>¿Quiénes completan este cuestionario?</label>
+        <input type="text" placeholder="Nombre/s y apellido/s">
+      </div>
+      <div class="field">
+        <label>Roles en la empresa</label>
+        <input type="text" placeholder="Ej: Marketing manager + Director comercial">
+      </div>
+      <div class="field">
+        <label>Fecha de respuesta</label>
+        <input type="text" placeholder="DD / MM / 2026">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1 — IDENTIDAD DE MARCA -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Identidad de marca</h2>
+      </div>
+    </div>
+    <p class="section-intro">El "alma" de Donzelli: cómo es como marca, cómo habla, qué transmite.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.1</span>Si Donzelli fuera una <strong>persona</strong>, ¿cómo sería? Describila en 4–5 líneas: edad, personalidad, cómo habla, qué le gusta, qué le molesta.</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.2</span>Elegí <strong>3 adjetivos</strong> que mejor describan a Donzelli como marca.</label>
+      <div class="q-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+        <input type="text" class="q-input" placeholder="Adjetivo 1">
+        <input type="text" class="q-input" placeholder="Adjetivo 2">
+        <input type="text" class="q-input" placeholder="Adjetivo 3">
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.3</span>¿Qué <strong>3 cosas Donzelli NUNCA</strong> haría como marca?</label>
+      <p class="q-help">Esto define el tono tanto o más que lo que sí hace.</p>
+      <textarea class="q-textarea" placeholder="Ej: 1. No usar tono agresivo en redes...&#10;2. No prometer resultados que no puede cumplir...&#10;3. ..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.4</span>Tono y personalidad: marcá dónde se ubica Donzelli en cada eje.</label>
+      <p class="q-help">Pensalo como Donzelli es hoy, no como te gustaría que fuera.</p>
+      <div class="attr-pairs">
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Formal</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr1" class="attr-dot">
+            <input type="radio" name="attr1" class="attr-dot">
+            <input type="radio" name="attr1" class="attr-dot">
+            <input type="radio" name="attr1" class="attr-dot">
+            <input type="radio" name="attr1" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Informal</strong></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Sobrio / minimalista</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr2" class="attr-dot">
+            <input type="radio" name="attr2" class="attr-dot">
+            <input type="radio" name="attr2" class="attr-dot">
+            <input type="radio" name="attr2" class="attr-dot">
+            <input type="radio" name="attr2" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Expresivo / colorido</strong></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Tradicional</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr3" class="attr-dot">
+            <input type="radio" name="attr3" class="attr-dot">
+            <input type="radio" name="attr3" class="attr-dot">
+            <input type="radio" name="attr3" class="attr-dot">
+            <input type="radio" name="attr3" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Disruptivo</strong></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Premium / aspiracional</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr4" class="attr-dot">
+            <input type="radio" name="attr4" class="attr-dot">
+            <input type="radio" name="attr4" class="attr-dot">
+            <input type="radio" name="attr4" class="attr-dot">
+            <input type="radio" name="attr4" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Cercano / accesible</strong></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Racional / técnico</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr5" class="attr-dot">
+            <input type="radio" name="attr5" class="attr-dot">
+            <input type="radio" name="attr5" class="attr-dot">
+            <input type="radio" name="attr5" class="attr-dot">
+            <input type="radio" name="attr5" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Emocional / inspirador</strong></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-side left"><strong>Serio</strong></div>
+          <div class="attr-scale">
+            <input type="radio" name="attr6" class="attr-dot">
+            <input type="radio" name="attr6" class="attr-dot">
+            <input type="radio" name="attr6" class="attr-dot">
+            <input type="radio" name="attr6" class="attr-dot">
+            <input type="radio" name="attr6" class="attr-dot">
+          </div>
+          <div class="attr-side right"><strong>Con humor</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.5</span>¿Existe un <strong>manual de marca</strong> o lineamientos visuales escritos?</label>
+      <p class="q-help">Si existe, dejanos el link o adjuntalo en la carpeta compartida. Si no existe, no hay problema.</p>
+      <input type="text" class="q-input" placeholder="Link o nota">
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.6</span>¿Cuáles son los <strong>colores principales</strong> y la <strong>tipografía</strong> que usan hoy?</label>
+      <textarea class="q-textarea" placeholder="Ej: azul marino + dorado · tipografía sans-serif moderna..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">1.7</span>Listá 3 marcas (de cualquier rubro) que <strong>te gustan visualmente</strong> o cuya estética admirás.</label>
+      <textarea class="q-textarea" placeholder="Ej: 1. Aesop — minimalismo y atención al detalle...&#10;2. ..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2 — PROPUESTA DE VALOR -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Propuesta de valor y mensaje</h2>
+      </div>
+    </div>
+    <p class="section-intro">Qué le promete Donzelli al mercado y cómo lo está comunicando hoy.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.1</span>Completá la frase: "Donzelli ayuda a <em>(quién)</em> a <em>(lograr qué)</em> a través de <em>(cómo)</em>".</label>
+      <textarea class="q-textarea" placeholder="Donzelli ayuda a..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.2</span>¿Cuál es la <strong>promesa central</strong> de Donzelli? ¿Qué obtiene un cliente al elegirlos que no obtiene en otro lado?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.3</span>¿Cuáles son los <strong>3 diferenciales más importantes</strong> de Donzelli hoy?</label>
+      <div class="q-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+        <textarea class="q-textarea" placeholder="Diferencial 1"></textarea>
+        <textarea class="q-textarea" placeholder="Diferencial 2"></textarea>
+        <textarea class="q-textarea" placeholder="Diferencial 3"></textarea>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.4</span>¿Tienen un <strong>tagline / slogan</strong> que usen hoy? Si no, ¿cómo describirías a Donzelli en una frase corta?</label>
+      <input type="text" class="q-input" placeholder="Ej: 'Diseño que dura más que las modas.'">
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.5</span>¿Hay <strong>palabras o frases</strong> que la marca usa habitualmente y que ya forman parte de su lenguaje?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">2.6</span>¿Hay palabras o conceptos que <strong>NUNCA</strong> usarían en la comunicación de Donzelli?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 — AUDIENCIA Y BUYER PERSONAS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Audiencia y buyer personas</h2>
+      </div>
+    </div>
+    <p class="section-intro">A quién le habla Donzelli, quién compra realmente y cómo es esa persona.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.1</span>Si tuvieras que dibujar al <strong>cliente ideal</strong> de Donzelli, ¿quién es? Edad, género, ubicación, situación de vida, profesión, ingresos aproximados.</label>
+      <textarea class="q-textarea tall" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.2</span>¿Coincide el <strong>cliente ideal</strong> con el <strong>cliente real</strong> que más compra hoy? Si no, ¿cuál es la diferencia?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.3</span>Definí <strong>2 buyer personas</strong> representativas de los principales segmentos de Donzelli.</label>
+      <p class="q-help">Si tienen más segmentos relevantes, agregalo en la sección de notas al final.</p>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <div class="pc-title">Buyer Persona 1</div>
+          <label>Nombre ficticio + edad</label>
+          <input type="text" placeholder="Ej: Sofía, 38">
+          <label>Profesión / situación</label>
+          <input type="text" placeholder="Ej: arquitecta, dos hijos">
+          <label>¿Qué la motiva a comprar?</label>
+          <textarea placeholder="Necesidad, deseo, problema..."></textarea>
+          <label>¿Qué la frena? Objeciones / miedos</label>
+          <textarea placeholder="..."></textarea>
+          <label>¿Dónde se informa antes de decidir?</label>
+          <textarea placeholder="Redes, recomendaciones, búsquedas, etc."></textarea>
+          <label>Frase típica que diría sobre Donzelli</label>
+          <textarea placeholder='Ej: "Es de las pocas que..."'></textarea>
+        </div>
+        <div class="persona-card">
+          <div class="pc-title">Buyer Persona 2</div>
+          <label>Nombre ficticio + edad</label>
+          <input type="text" placeholder="Ej: Martín, 52">
+          <label>Profesión / situación</label>
+          <input type="text" placeholder="Ej: dueño de pyme">
+          <label>¿Qué lo motiva a comprar?</label>
+          <textarea placeholder="..."></textarea>
+          <label>¿Qué lo frena? Objeciones / miedos</label>
+          <textarea placeholder="..."></textarea>
+          <label>¿Dónde se informa antes de decidir?</label>
+          <textarea placeholder="..."></textarea>
+          <label>Frase típica que diría sobre Donzelli</label>
+          <textarea placeholder="..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">3.4</span>¿Hay un <strong>público al que NO querés venderle</strong>, aunque pueda comprar?</label>
+      <p class="q-help">Definir esto suele ser tan importante como definir el cliente ideal.</p>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4 — CUSTOMER JOURNEY -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Customer Journey actual</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cómo es hoy el recorrido de un cliente nuevo de punta a punta.</p>
+
+    <div class="journey-stages">
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 1</div>
+        <div class="js-name">Descubrimiento — ¿Cómo se entera de Donzelli un cliente nuevo?</div>
+        <textarea placeholder="Recomendación, búsqueda en Google, redes, publicidad, ferias, etc."></textarea>
+      </div>
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 2</div>
+        <div class="js-name">Consideración — ¿Qué hace antes de decidir? ¿Compara con quiénes? ¿Qué consulta?</div>
+        <textarea placeholder="..."></textarea>
+      </div>
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 3</div>
+        <div class="js-name">Conversión — ¿Cómo se concreta la primera compra? ¿Por qué canal? ¿Cuánto tarda?</div>
+        <textarea placeholder="..."></textarea>
+      </div>
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 4</div>
+        <div class="js-name">Post-compra — ¿Qué pasa después? ¿Hay onboarding, seguimiento, comunicación?</div>
+        <textarea placeholder="..."></textarea>
+      </div>
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 5</div>
+        <div class="js-name">Recompra y fidelización — ¿Vuelve a comprar? ¿Cada cuánto? ¿Qué los hace volver?</div>
+        <textarea placeholder="..."></textarea>
+      </div>
+
+      <div class="journey-stage">
+        <div class="js-title">Etapa 6</div>
+        <div class="js-name">Recomendación — ¿Recomiendan a Donzelli? ¿Qué hacen ustedes para incentivarlo?</div>
+        <textarea placeholder="..."></textarea>
+      </div>
+
+    </div>
+
+    <div class="q" style="margin-top: 30px;">
+      <label class="q-label"><span class="num">4.1</span>¿En qué etapa del journey ves <strong>la mayor fricción o caída de clientes</strong> hoy?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">4.2</span>¿Cuánto tiempo pasa, en promedio, desde que un cliente <strong>se entera</strong> de Donzelli hasta que <strong>compra</strong>?</label>
+      <input type="text" class="q-input" placeholder="Ej: 3 a 5 días, 2 semanas, 2 meses...">
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5 — VOZ DEL CLIENTE -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Voz del cliente</h2>
+      </div>
+    </div>
+    <p class="section-intro">Lo que el cliente dice de Donzelli, en sus propias palabras. Esta sección es oro puro para la estrategia de mensajes.</p>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.1</span>¿Cuáles son las <strong>3 objeciones más frecuentes</strong> que aparecen en el proceso de venta?</label>
+      <p class="q-help">Lo que dicen los clientes potenciales antes de decidir comprar o no.</p>
+      <textarea class="q-textarea tall" placeholder="Ej: 1. 'Es caro'...&#10;2. 'No estoy seguro de que me sirva'...&#10;3. ..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.2</span>¿Qué frase repiten los clientes <strong>satisfechos</strong> después de comprar? ¿Cuál es el elogio que más escuchan?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.3</span>¿Cuál es el <strong>reclamo o queja</strong> más frecuente que reciben?</label>
+      <textarea class="q-textarea" placeholder="Escribir aquí..."></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.4</span>¿Tienen <strong>testimonios escritos, audiovisuales o reseñas</strong> recopilados en algún lado?</label>
+      <p class="q-help">Si sí, dejá el link o ubicación. Si están dispersos, no hay problema, los recopilamos durante la Fase 2.</p>
+      <input type="text" class="q-input" placeholder="Link o ubicación de los testimonios">
+    </div>
+
+    <div class="q">
+      <label class="q-label"><span class="num">5.5</span>¿Hay <strong>3 a 5 clientes</strong> con los que tengan buena relación y que podríamos contactar para entrevistas? (15–20 min, modalidad online).</label>
+      <p class="q-help">Idealmente: clientes representativos de los segmentos clave + algún cliente "estrella" + algún cliente perdido si están abiertos a contactarlo.</p>
+      <textarea class="q-textarea tall" placeholder="Nombre · empresa · email/teléfono · razón por la que es interesante hablar con esta persona"></textarea>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6 — NOTAS LIBRES -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title-block">
+        <div class="section-eyebrow">Sección</div>
+        <h2>Notas libres</h2>
+      </div>
+    </div>
+    <p class="section-intro">Cualquier cosa que sientas que no entró en las preguntas anteriores y que es relevante para entender Donzelli.</p>
+
+    <div class="q">
+      <textarea class="q-textarea tall" style="min-height: 180px;" placeholder="Espacio libre..."></textarea>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div><span class="red">CUESTIONARIO 02 / 03 · MARCA, AUDIENCIA Y CLIENTE</span> &nbsp;·&nbsp; M.Donzelli &nbsp;·&nbsp; Mayo 2026</div>
+    <span class="cai-logo">CAI<span class="rocket">🚀</span></span>
+  </footer>
+
+</div>
+
+<div class="download-bar">
+  <div class="bar-msg"><strong>Cuestionario 02 — Marca, Audiencia y Cliente</strong> &nbsp;·&nbsp; Completá todas las preguntas y luego descargá.</div>
+  <div class="download-bar-actions">
+    <button class="btn-txt" onclick="descargarTXT()">⬇ Descargar TXT</button>
+    <button class="btn-download" onclick="descargarPDF()">⬇ Guardar como PDF</button>
+  </div>
+</div>
+
+<script>
+
+function descargarPDF() {
+  window.print();
+}
+
+function descargarTXT() {
+  var lines = [];
+  lines.push("Cuestionario 02 - Marca, Audiencia y Cliente");
+  lines.push("M.Donzelli x CAI · " + new Date().toLocaleDateString('es-AR'));
+  lines.push("=".repeat(60));
+  lines.push("");
+
+  var respInputs = document.querySelectorAll('.respondent-block input, .respondent-block textarea');
+  var respLabels = document.querySelectorAll('.respondent-block label');
+  if (respInputs.length > 0) {
+    lines.push("-- DATOS DEL RESPONDENTE --");
+    respLabels.forEach(function(lbl, i) {
+      var inp = respInputs[i];
+      if (inp) lines.push(lbl.innerText.trim() + ": " + (inp.value.trim() || "(sin respuesta)"));
+    });
+    lines.push("");
+  }
+
+  var allQ = document.querySelectorAll('.q');
+  allQ.forEach(function(q) {
+    var qLabel = q.querySelector('.q-label');
+    if (qLabel) lines.push(">> " + qLabel.innerText.trim());
+
+    var cards = q.querySelectorAll('.repeating-card');
+    if (cards.length > 0) {
+      cards.forEach(function(card) {
+        var cardTitle = card.querySelector('.rc-title');
+        if (cardTitle) lines.push("  -- " + cardTitle.innerText.trim() + " --");
+        var cardLabels = card.querySelectorAll('label');
+        var cardInputs = card.querySelectorAll('input, textarea');
+        cardInputs.forEach(function(inp, i) {
+          var lbl = cardLabels[i];
+          if (lbl) lines.push("  " + lbl.innerText.trim() + ": " + (inp.value.trim() || "(sin respuesta)"));
+        });
+        lines.push("");
+      });
+    } else {
+      var inputs = q.querySelectorAll('input, textarea');
+      inputs.forEach(function(inp) {
+        var closestField = inp.closest('.field');
+        if (closestField) {
+          var fieldLabel = closestField.querySelector('label');
+          if (fieldLabel) { lines.push("  [" + fieldLabel.innerText.trim() + "] " + (inp.value.trim() || "(sin respuesta)")); return; }
+        }
+        lines.push("  " + (inp.value.trim() || "(sin respuesta)"));
+      });
+    }
+    lines.push("");
+  });
+
+  var text = lines.join('
+');
+  var dataUri = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+  var a = document.createElement('a');
+  a.href = dataUri;
+  a.download = 'cuestionario-02-marca-audiencia-mdonzelli.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+</script>
+
+</body>
+</html>
